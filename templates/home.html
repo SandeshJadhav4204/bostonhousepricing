@@ -20,9 +20,15 @@
     }
 
     @keyframes gradientBackground {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
     .container {
@@ -54,6 +60,13 @@
 
     td {
       padding: 10px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #555;
     }
 
     input {
@@ -103,31 +116,70 @@
     <form action="{{ url_for('predict') }}" method="post">
       <table>
         <tr>
-          <td><input type="text" name="CRIM" placeholder="Crime Rate" required="required" /></td>
-          <td><input type="text" name="ZN" placeholder="Residential Land Zoned" required="required" /></td>
+          <td>
+            <label for="CRIM">Crime Rate (per capita):</label>
+            <input type="text" id="CRIM" name="CRIM" placeholder="e.g., 0.1 for low crime rate" required="required" />
+          </td>
+          <td>
+            <label for="ZN">Residential Land (%):</label>
+            <input type="text" id="ZN" name="ZN" placeholder="e.g., 20 for 20% large lots" required="required" />
+          </td>
         </tr>
         <tr>
-          <td><input type="text" name="INDUS" placeholder="Non-Retail Business Acres" required="required" /></td>
-          <td><input type="text" name="CHAS" placeholder="Charles River" required="required" /></td>
+          <td>
+            <label for="INDUS">Non-Retail Business Land (%):</label>
+            <input type="text" id="INDUS" name="INDUS" placeholder="e.g., 10 for 10% business land" required="required" />
+          </td>
+          <td>
+            <label for="CHAS">Charles River Proximity:</label>
+            <input type="text" id="CHAS" name="CHAS" placeholder="1 if next to river, 0 otherwise" required="required" />
+          </td>
         </tr>
         <tr>
-          <td><input type="text" name="NOX" placeholder="Nitric Oxides Concentration" required="required" /></td>
-          <td><input type="text" name="RM" placeholder="Number of Rooms" required="required" /></td>
+          <td>
+            <label for="NOX">NOX Concentration:</label>
+            <input type="text" id="NOX" name="NOX" placeholder="e.g., 0.5 for moderate pollution" required="required" />
+          </td>
+          <td>
+            <label for="RM">Average Number of Rooms:</label>
+            <input type="text" id="RM" name="RM" placeholder="e.g., 6 for 6 rooms" required="required" />
+          </td>
         </tr>
         <tr>
-          <td><input type="text" name="AGE" placeholder="Age of Property" required="required" /></td>
-          <td><input type="text" name="DIS" placeholder="Distance to Employment Centers" required="required" /></td>
+          <td>
+            <label for="AGE">Age of House (% built before 1940):</label>
+            <input type="text" id="AGE" name="AGE" placeholder="e.g., 65 for 65% older houses" required="required" />
+          </td>
+          <td>
+            <label for="DIS">Distance to Employment Centers:</label>
+            <input type="text" id="DIS" name="DIS" placeholder="e.g., 5 for distance to employment centers" required="required" />
+          </td>
         </tr>
         <tr>
-          <td><input type="text" name="RAD" placeholder="Accessibility to Highways" required="required" /></td>
-          <td><input type="text" name="TAX" placeholder="Property Tax Rate" required="required" /></td>
+          <td>
+            <label for="RAD">Accessibility to Highways (1-24):</label>
+            <input type="text" id="RAD" name="RAD" placeholder="e.g., 3 for low accessibility" required="required" />
+          </td>
+          <td>
+            <label for="TAX">Property Tax Rate:</label>
+            <input type="text" id="TAX" name="TAX" placeholder="e.g., 300 for $300 per $10,000" required="required" />
+          </td>
         </tr>
         <tr>
-          <td><input type="text" name="PTRATIO" placeholder="Pupil-Teacher Ratio" required="required" /></td>
-          <td><input type="text" name="B" placeholder="Black Population" required="required" /></td>
+          <td>
+            <label for="PTRATIO">Pupil-Teacher Ratio:</label>
+            <input type="text" id="PTRATIO" name="PTRATIO" placeholder="e.g., 15 for 15 students per teacher" required="required" />
+          </td>
+          <td>
+            <label for="B">Proportion of Black Residents:</label>
+            <input type="text" id="B" name="B" placeholder="e.g., 396.9 for higher proportion" required="required" />
+          </td>
         </tr>
         <tr>
-          <td><input type="text" name="LSTAT" placeholder="Lower Status Population" required="required" /></td>
+          <td colspan="2">
+            <label for="LSTAT">Lower Status Population (%):</label>
+            <input type="text" id="LSTAT" name="LSTAT" placeholder="e.g., 12 for 12% lower status population" required="required" />
+          </td>
         </tr>
       </table>
       <button type="submit">Predict</button>
